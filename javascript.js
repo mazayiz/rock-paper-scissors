@@ -1,6 +1,20 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", () => {
+    gameRound("rock");
+});
+paper.addEventListener("click", () => {
+    gameRound("paper");
+});
+scissors.addEventListener("click", () => {
+    gameRound("scissors");
+});
+
 function getComputerChoice() {
     let randomGuess = Math.floor(Math.random() * 3 +1);
     if (randomGuess == 1) {
@@ -14,11 +28,6 @@ function getComputerChoice() {
         return "scissors";
     }
     // console.log(randomGuess);
-};
-
-function getHumanChoice() {
-    let human = prompt("Rock, Paper, Scissors?");
-    return human;
 };
 
 function playRound(humanChoice, computerChoice) {
@@ -47,19 +56,9 @@ function playRound(humanChoice, computerChoice) {
     }
 };
 
-function gameRound() {
-    const humanSelection = getHumanChoice();
+function gameRound(choice) {
+    const humanSelection = choice;
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
     console.log("Humanity: " + humanScore + " AI Overlords: " + computerScore);
 }
-
-function playGame() {
-    gameRound();
-    gameRound();
-    gameRound();
-    gameRound();
-    gameRound();
-};
-
-playGame();
